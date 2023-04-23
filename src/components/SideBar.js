@@ -5,7 +5,8 @@ import iconp from '../assets/icon.png'
 import sun from '../assets/icon-light-theme.svg'
 import moon from '../assets/icon-dark-theme.svg'
 import eyelash from '../assets/icon-hide-sidebar.svg'
-import { ToggleSlider }  from "react-toggle-slider"; 
+// import { ToggleSlider }  from "react-toggle-slider"; 
+import Toggle from 'react-styled-toggle';
 import { useDispatch, useSelector } from 'react-redux'
 import { showAddBoardModal, sidebarToggle,backgroundToggle} from '../features/toggle/toggleSlice'
 import { setSelectedBoard,getBoards} from '../features/board/boardSlice'
@@ -72,13 +73,20 @@ const SideBar = () => {
         <div className='absolute left-[24px] top-[600px] w-[251px] text-gray-1 pl-5' >
               <div className={`${dark ? 'bg-black': 'bg-gray-2'} flex items-center justify-center gap-3  rounded-md h-[48px]`}>
                 <img alt='sun' className='h-[15px] w-[15px]' src={sun}/>
-                <ToggleSlider
+                <Toggle
+                    checked = {dark}
+                    onChange= {toggleBackground}
+                    backgroundColorChecked = '#635FC7'
+                    // backgroundColorUnchecked = 'white'
+                    backgroundColorButton = 'white'
+                />
+                {/* <ToggleSlider
                       handleBackgroundColor='white'
                       handleBackgroundColorActive='white'
                       barBackgroundColorActive='#635FC7'
                       active={dark}
                       onToggle={toggleBackground}
-                />
+                /> */}
                 <img alt='moon' className='h-[15px] w-[15px]' src={moon}/>
               </div>
               <button onClick={()=>toggleSidebar()} className='h-[48px] flex justify center items-center gap-3 font-bold text-xs font-jakarta'>

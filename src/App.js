@@ -1,6 +1,4 @@
 import './App.css';
-import { menuToggle } from './features/board/boardSlice';
-import { useSelector } from 'react-redux';
 import { Routes,Route } from 'react-router-dom';
 import Home from './components/Home';
 function App() {
