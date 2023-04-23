@@ -20,6 +20,7 @@ const Boards = () => {
         dispatch(showAddBoardModal())
       }
 
+
     const selectBoard = (payload) =>{
         dispatch(setSelectedBoard(payload))
       }
