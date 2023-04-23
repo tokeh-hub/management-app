@@ -44,7 +44,7 @@ const BoardHeader = ({title}) => {
           </div>
 
           <div className='flex gap-4'>
-               <button onClick={()=>showAddTask()} className='w-fit bg-purple-1 rounded-3xl px-6 py-1 text-lg flex justify-center items-center text-white'>+</button>
+               <button onClick={()=>showAddTask()} className={`${columnsPresent ? 'opacity-1 hover:bg-indigo-300' : 'opacity-30'}  w-fit bg-purple-1 rounded-3xl px-6 py-1 text-lg flex justify-center items-center text-white`}>+</button>
                <button onClick={()=>showActions()}><img src={elipsis} alt='elipsis'/></button>
           </div>
 
