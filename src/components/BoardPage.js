@@ -5,7 +5,7 @@ import BoardContent from './BoardContent'
 import BoardActions from './BoardActions'
 import { useSelector } from 'react-redux'
 const BoardPage = () => {
-  const {selectedBoard} = useSelector(state=>state.board.selectedBoard)
+  const {selectedBoard} = useSelector(state=>state.board)
   const {boardActions} = useSelector(state=>state.toggle)
   return (
     <div className={`uppercase text-start relative w-screen sm:w-full flex flex-col h-full`}>
@@ -22,10 +22,6 @@ const BoardPage = () => {
               <BoardContent/>
         </div>
       }
-       
-        
-       
-        
     </div>
   )
 }

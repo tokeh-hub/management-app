@@ -22,7 +22,7 @@ const Home = () => {
   }
 
   return (
-    <div className={`flex relative ${dark ? 'bg-black' : 'bg-gray-3'} w-screen h-screen ${hideSidebar ? 'overflow-y-auto' : 'overflow-hidden'}`}>
+    <div className={`flex gap-0 relative ${dark ? 'bg-black' : 'bg-gray-3'} w-screen h-screen ${hideSidebar ? 'overflow-y-auto' : 'overflow-hidden'}`}>
       {addBoardModal && <AddBoard />}
       {taskDetailModal && <TaskDetails />}
       {editBoardModal && <EditBoard />}

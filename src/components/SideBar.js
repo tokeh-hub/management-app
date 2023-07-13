@@ -2,20 +2,23 @@ import React, { useEffect } from 'react'
 import logo from '../assets/kanban logo.jpg'
 import { ReactComponent as DownloadSVG } from '../assets/icon-board.svg';
 import iconp from '../assets/icon.png'
-import sun from '../assets/icon-light-theme.svg'
-import moon from '../assets/icon-dark-theme.svg'
-import eyelash from '../assets/icon-hide-sidebar.svg'
-// import { ToggleSlider }  from "react-toggle-slider"; 
+import sunIcon from '../assets/icon-light-theme.svg'
+import moonIcon from '../assets/icon-dark-theme.svg'
+import eyelashIcon from '../assets/icon-hide-sidebar.svg' 
 import Toggle from 'react-styled-toggle';
 import { useDispatch, useSelector } from 'react-redux'
 import { showAddBoardModal, sidebarToggle,backgroundToggle} from '../features/toggle/toggleSlice'
 import { setSelectedBoard,getBoards} from '../features/board/boardSlice'
 import axios from 'axios'
 
+const sun = sunIcon;
+const moon = moonIcon;
+const eyelash = eyelashIcon;
+
 const SideBar = () => {
     const {dark} = useSelector(state=>state.toggle)
-    const {selectedBoard} = useSelector(state=>state.board.selectedBoard)
-    const {boards} = useSelector(state=>state.board.boards)
+    const {selectedBoard} = useSelector(state=>state.board)
+    const {boards} = useSelector(state=>state.board)
     const dispatch = useDispatch()
 
     const toggleSidebar = () =>{
@@ -46,9 +49,9 @@ const SideBar = () => {
     },[])
     
   return (
-    <div className={`relative hidden ${dark ? 'bg-gray-7':'bg-white'} xs:w-[300px] h-full overflow-hidden max-h-[1024px] pt-4 border-r-2 ${dark? 'border-gray-8':'border-gray-3'} sm:flex flex-col`}>
+    <div className={`relative hidden ${dark ? 'bg-gray-7':'bg-white'} sm:w-[230px] md:w-[240px] lg:w-[300px] h-full overflow-hidden max-h-[1024px] pt-4 border-r-2 ${dark? 'border-gray-8':'border-gray-3'} sm:flex flex-col`}>
         <div className='logo-container w-[152.53px] h-[25.22px] pl-5'>
-          <img src={logo} alt='logo' className='w-full h-full'/>
+          <img src={logo} alt='logo' className='w-full h-full' width={200} height={150}/>
         </div>
         <div className='absolute top-[112px] w-full pr-6 flex flex-col font-jakarta text-gray-1'>
               <h3 className='text-justify font-bold text-xs tracking-[2.4px] uppercase mb-3 pl-5'>All Boards ({boards ? boards.length : 0})</h3>
@@ -74,23 +77,15 @@ const SideBar = () => {
               <div className={`${dark ? 'bg-black': 'bg-gray-2'} flex items-center justify-center gap-3  rounded-md h-[48px]`}>
                 <img alt='sun' className='h-[15px] w-[15px]' src={sun}/>
                 <Toggle
-                    checked = {dark}
+                    defaultChecked = {dark}
                     onChange= {toggleBackground}
                     backgroundColorChecked = '#635FC7'
-                    // backgroundColorUnchecked = 'white'
                     backgroundColorButton = 'white'
                 />
-                {/* <ToggleSlider
-                      handleBackgroundColor='white'
-                      handleBackgroundColorActive='white'
-                      barBackgroundColorActive='#635FC7'
-                      active={dark}
-                      onToggle={toggleBackground}
-                /> */}
                 <img alt='moon' className='h-[15px] w-[15px]' src={moon}/>
               </div>
               <button onClick={()=>toggleSidebar()} className='h-[48px] flex justify center items-center gap-3 font-bold text-xs font-jakarta'>
-                <img alt='eyelash' src={eyelash}/>
+                <img alt='eyelash' src={eyelash} width={20} height={15}/>
                 <p>Hide Sidebar</p>
               </button>
         </div>

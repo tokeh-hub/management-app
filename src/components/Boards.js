@@ -2,19 +2,20 @@ import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { ReactComponent as DownloadSVG } from '../assets/icon-board.svg';
 import { setSelectedBoard } from '../features/board/boardSlice';
-import sun from '../assets/icon-light-theme.svg'
-import moon from '../assets/icon-dark-theme.svg'
+import sunIcon from '../assets/icon-light-theme.svg'
+import moonIcon from '../assets/icon-dark-theme.svg'
 import iconp from '../assets/icon.png'
 import Toggle from 'react-styled-toggle';
-// import { ToggleSlider }  from "react-toggle-slider";
 import { backgroundToggle, showAvailableBoards,showAddBoardModal } from '../features/toggle/toggleSlice';
 
+const sun = sunIcon
+const moon = moonIcon
+
 const Boards = () => {
-    const {boards} = useSelector(state=>state.board.boards)
+    const {boards} = useSelector(state=>state.board)
     const {dark} = useSelector(state=>state.toggle)
     const dispatch = useDispatch()
-    console.log('dark',dark)
-    const {selectedBoard} = useSelector(state=>state.board.selectedBoard)
+    const {selectedBoard} = useSelector(state=>state.board)
     
     const revealAddBoardModal = () =>{
         dispatch(showAvailableBoards())
@@ -57,19 +58,11 @@ const Boards = () => {
             <div className={`${dark ? 'bg-black': 'bg-gray-2'} flex items-center justify-center gap-3 mx-5  rounded-md h-[48px]`}>
                 <img alt='sun' className='h-[15px] w-[15px]' src={sun}/>
                 <Toggle
-                    checked = {dark}
+                    defaultChecked = {dark}
                     onChange= {toggleBackground}
                     backgroundColorChecked = '#635FC7'
-                    // backgroundColorUnchecked = 'white'
                     backgroundColorButton = 'white'
                 />
-                {/* <ToggleSlider
-                      handleBackgroundColor='white'
-                      handleBackgroundColorActive='white'
-                      barBackgroundColorActive='#635FC7'
-                      active={dark}
-                      onToggle={toggleBackground}
-                /> */}
                 <img alt='moon' className='h-[15px] w-[15px]' src={moon}/>
               </div>
 
